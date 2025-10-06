@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.2/ref/settings/
 """
 
 from pathlib import Path
+import dj-database-url
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -76,16 +77,7 @@ WSGI_APPLICATION = 'cinemasystem.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': 'mydb',        # database name
-        'USER': 'postgres',      # database username
-        'PASSWORD': 'password',  # database password
-        'HOST': 'localhost',   # '127.0.0.1' if local, or remote IP
-        'PORT': '5432',        # default PostgreSQL port
-    }
-}
+
 
 
 
@@ -144,3 +136,4 @@ DEFAULT_FROM_EMAIL = 'Olsen Cinema <jabaliamunga@gmail.com>'
 CRONJOBS = [
     ('10 11 * * *', 'hello.cron.daily_reminder'),  # every day at 11:10 AM
 ]
+
