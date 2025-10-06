@@ -77,7 +77,13 @@ WSGI_APPLICATION = 'cinemasystem.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/5.2/ref/settings/#databases
 
-
+DATABASES = {
+    "default": dj_database_url.config(
+        default=os.environ.get("DATABASE_URL"),  # ✅ get from env
+        conn_max_age=600,
+        ssl_require=True,  # for Render
+    )
+}
 
 
 
@@ -136,4 +142,5 @@ DEFAULT_FROM_EMAIL = 'Olsen Cinema <jabaliamunga@gmail.com>'
 CRONJOBS = [
     ('10 11 * * *', 'hello.cron.daily_reminder'),  # every day at 11:10 AM
 ]
+
 
