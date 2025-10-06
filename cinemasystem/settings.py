@@ -86,7 +86,7 @@ DATABASES = {
 }
 
 
-
+DEBUG = 'False'
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -143,4 +143,16 @@ CRONJOBS = [
     ('10 11 * * *', 'hello.cron.daily_reminder'),  # every day at 11:10 AM
 ]
 
+if not DEBUG:
+    SECURE_HSTS_SECONDS = 31536000
+    SECURE_HSTS_INCLUDE_SUBDOMAINS = True
+    SECURE_HSTS_PRELOAD = True
+    SECURE_SSL_REDIRECT = True
+    SESSION_COOKIE_SECURE = True
+    CSRF_COOKIE_SECURE = True
+else:
+    # Disable strict HTTPS in local dev
+    SECURE_SSL_REDIRECT = False
+    SESSION_COOKIE_SECURE = False
+    CSRF_COOKIE_SECURE = False
 
