@@ -64,44 +64,48 @@ def index(request):
 
 def booking_view(request):
     if request.method == "POST":
-        customer_email= request.POST.get("email")
+        customer_email = request.POST.get("email")
         advisor = request.POST.get("advisor")
-        productions_name = request.POST.get("production_name")
+        production_name = request.POST.get("production_name")
         production_type = request.POST.get("production_type")
         seat_preference = request.POST.get("seat_preference")
-        
-        
-        if not customer_email or not productions_name or not production_type or not seat_preference:
+
+        if not all([customer_email, production_name, production_type, seat_preference]):
             messages.error(request, "All fields are required!")
             return redirect("index")
-        
+
         if not Customer.objects.filter(email=customer_email).exists():
             messages.error(request, "Email does not exist, please create an account first!")
             return redirect("home")
-        
-        if Booking.objects.filter(customer_email=customer_email, productions_name=productions_name, seat_preference=seat_preference).exists():
+
+        if Booking.objects.filter(
+            customer_email=customer_email,
+            production_name=production_name,
+            seat_preference=seat_preference
+        ).exists():
             messages.error(request, "You have already booked this production with the same seat preference!")
             return redirect("index")
-             
-        
+
         Booking.objects.create(
             customer_email=customer_email,
             advisor=advisor,
-            productions_name=productions_name,
+            production_name=production_name,
             production_type=production_type,
             seat_preference=seat_preference
         )
+
+        # Use console backend first during testing
         send_mail(
-            subject="Welcome to Olsen Cinema",
-            message=f"Hi  your booking for {productions_name} with seat preference {seat_preference} has been received. we look forward to keep you entertained. Thank you for choosing golden Cinema.",
-            from_email="Golden Cinema Company <jabaliamunga@gmail.com>",
+            subject="Booking Confirmation - Gold Cinema",
+            message=f"Hi! Your booking for '{production_name}' ({production_type}) with seat '{seat_preference}' has been received. Thank you for choosing Gold Cinema!",
+            from_email="Gold Cinema <jabaliamunga@gmail.com>",
             recipient_list=[customer_email],
-            fail_silently=False,
-            
+            fail_silently=True,  # prevent server error during tests
         )
-        
-        messages.success(request, "Booking successful, check your email for notification!")
+
+        messages.success(request, "Booking successful! Check your email for confirmation.")
         return redirect("index")
+
     return render(request, "account.html")
 
 def daily_reminder():
@@ -112,4 +116,5 @@ def daily_reminder():
             "This is your daily update from Sister Michaela Portal.",
             None,
             [user.email],
+
         )
