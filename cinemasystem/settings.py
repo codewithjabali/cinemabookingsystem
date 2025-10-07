@@ -30,7 +30,8 @@ SECRET_KEY = 'django-insecure-&!2qu2v)7#fhfuo5(==)kito+%hcwx^-ku4x)01=u5z-2at3=k
 DEBUG = True
 
 
-ALLOWED_HOSTS = ['cinemabooking.onrender.com']
+ALLOWED_HOSTS = ['cinemabooking-ogg0.onrender.com', 'localhost', '127.0.0.1']
+
 
 
 
@@ -158,6 +159,7 @@ else:
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
+
 
 
 
