@@ -80,7 +80,7 @@ def booking_view(request):
 
         if Booking.objects.filter(
             customer_email=customer_email,
-            production_name=production_name,
+            productions_name=production_name,
             seat_preference=seat_preference
         ).exists():
             messages.error(request, "You have already booked this production with the same seat preference!")
@@ -89,7 +89,7 @@ def booking_view(request):
         Booking.objects.create(
             customer_email=customer_email,
             advisor=advisor,
-            production_name=production_name,
+            productions_name=production_name,
             production_type=production_type,
             seat_preference=seat_preference
         )
@@ -118,4 +118,5 @@ def daily_reminder():
             [user.email],
 
         )
+
 
