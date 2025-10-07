@@ -42,7 +42,7 @@ class Booking(models.Model):
     def __str__(self):
         return f"Booking for {self.customer_email} with {self.advisor} on {self.booked_at}"
 
-class perfomance(models.Model):
+class Perfomance(models.Model):
     no_tickets_sold = models.IntegerField()
     date_of_perfomance = models.DateField()
     
@@ -50,10 +50,11 @@ class perfomance(models.Model):
         return f"{self.date_of_perfomance}  {self.no_tickets_sold}"
     
     
-class production(models.Model):
+class Production(models.Model):
     production_name = models.CharField(max_length=100)
     production_type = models.CharField(max_length=100) #concert/play/movie
     start_date = models.DateField()
     
     def __str__(self):
+
         return f"{self.production_name} ({self.production_type})  {self.start_date}"    
