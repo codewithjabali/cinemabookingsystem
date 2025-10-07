@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .models import Customer, Booking, production
+from .models import Customer, Booking, Production
 from django.contrib import messages
 from django.core.mail import send_mail
 
@@ -118,3 +118,4 @@ def daily_reminder():
             [user.email],
 
         )
+
