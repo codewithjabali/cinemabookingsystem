@@ -27,7 +27,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = 'django-insecure-&!2qu2v)7#fhfuo5(==)kito+%hcwx^-ku4x)01=u5z-2at3=k'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 
 
 ALLOWED_HOSTS = ['cinemabooking-ogg0.onrender.com', 'localhost', '127.0.0.1']
@@ -90,7 +90,6 @@ DATABASES = {
 }
 
 
-DEBUG = 'False'
 # Password validation
 # https://docs.djangoproject.com/en/5.2/ref/settings/#auth-password-validators
 
@@ -159,6 +158,7 @@ else:
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
+
 
 
 
