@@ -135,17 +135,17 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Email configuration for Gmail SMTP
 # Make sure to enable "Less secure app access" in your Google account settings
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
+# === BREVO SMTP CONFIG ===
+EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
+
+EMAIL_HOST = "smtp-relay.brevo.com"
 EMAIL_PORT = 587
 EMAIL_USE_TLS = True
-EMAIL_HOST_USER = os.environ.get('EMAIL_HOST_USER') #your gmail address
-EMAIL_HOST_PASSWORD = os.environ.get('EMAIL_HOST_PASSWORD') 
-DEFAULT_FROM_EMAIL = 'Olsen Cinema <jabaliamunga@gmail.com>'
 
-CRONJOBS = [
-    ('10 11 * * *', 'hello.cron.daily_reminder'),  # every day at 11:10 AM
-]
+EMAIL_HOST_USER = "9890b3001@smtp-brevo.com"   # the same one you used to sign up for Brevo
+EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")  #your brevo api key
+
+DEFAULT_FROM_EMAIL = "Gold Cinema <jabaliamunga@gmail.com>"
 
 if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000
@@ -159,6 +159,7 @@ else:
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
+
 
 
 
