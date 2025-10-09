@@ -38,7 +38,7 @@ def register(request):
             message=f"Hi {first_name}, thank you for registering at Gold Cinema Company. You can now book your tickets and enjoy our services.",
             from_email="Golden Cinema Company <jabaliamunga@gmail.com>",
             recipient_list=[email],
-            fail_silently=False,
+            fail_silently=True,
             
         )
         
@@ -107,6 +107,7 @@ def booking_view(request):
         return redirect("index")
 
     return render(request, "account.html")
+
 
 
 
