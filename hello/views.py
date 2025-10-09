@@ -108,15 +108,7 @@ def booking_view(request):
 
     return render(request, "account.html")
 
-def daily_reminder():
-    users = Customer.objects.all()
-    for user in users:
-        send_mail(
-            "Daily Reminder",
-            "This is your daily update from Sister Michaela Portal.",
-            None,
-            [user.email],
 
-        )
+
 
 
