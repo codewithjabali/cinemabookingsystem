@@ -145,7 +145,7 @@ EMAIL_USE_TLS = True
 EMAIL_HOST_USER = "9890b3001@smtp-brevo.com"   # the same one you used to sign up for Brevo
 EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")  #your brevo api key
 
-DEFAULT_FROM_EMAIL = "Gold Cinema <jabaliamunga@gmail.com>"
+DEFAULT_FROM_EMAIL = "Gold Cinema Gold Cinema <9890b3001@smtp-brevo.com>"
 
 if not DEBUG:
     SECURE_HSTS_SECONDS = 31536000
@@ -159,6 +159,7 @@ else:
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
+
 
 
 
