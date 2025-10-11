@@ -33,14 +33,7 @@ def register(request):
             email=email, phone=phone, address=address,
             city=city, zip_code=zip_code, password=password
         )
-        send_mail(
-            subject="Welcome to Gold Cinema Company",
-            message=f"Hi {first_name}, thank you for registering at Gold Cinema Company. You can now book your tickets and enjoy our services.",
-            from_email="Golden Cinema Company <jabaliamunga@gmail.com>",
-            recipient_list=[email],
-            fail_silently=True,
-            
-        )
+        
         
         return redirect("index")
 
@@ -95,18 +88,13 @@ def booking_view(request):
         )
 
         # Use console backend first during testing
-        send_mail(
-            subject="Booking Confirmation - Gold Cinema",
-            message=f"Hi! Your booking for '{production_name}' ({production_type}) with seat '{seat_preference}' has been received. Thank you for choosing Gold Cinema!",
-            from_email="Gold Cinema <jabaliamunga@gmail.com>",
-            recipient_list=[customer_email],
-            fail_silently=True,  # prevent server error during tests
-        )
+       
 
         messages.success(request, "Booking successful! Check your email for confirmation.")
         return redirect("index")
 
     return render(request, "account.html")
+
 
 
 
