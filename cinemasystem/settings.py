@@ -135,14 +135,6 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Make sure to enable "Less secure app access" in your Google account settings
 
 # === BREVO SMTP CONFIG ===
-EMAIL_BACKEND = "django.core.mail.backends.smtp.EmailBackend"
-
-EMAIL_HOST = "smtp-relay.brevo.com"
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-
-EMAIL_HOST_USER = "9890b3001@smtp-brevo.com"   # the same one you used to sign up for Brevo
-EMAIL_HOST_PASSWORD = os.environ.get("EMAIL_HOST_PASSWORD")  #your brevo api key
 
 DEFAULT_FROM_EMAIL = "Gold Cinema Gold Cinema <9890b3001@smtp-brevo.com>"
 
@@ -158,6 +150,7 @@ else:
     SECURE_SSL_REDIRECT = False
     SESSION_COOKIE_SECURE = False
     CSRF_COOKIE_SECURE = False
+
 
 
 
